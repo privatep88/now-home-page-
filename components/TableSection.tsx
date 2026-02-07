@@ -10,10 +10,16 @@ const TableSection: React.FC<TableSectionProps> = ({ data }) => {
 
   const filters = ['الكل', 'قيد الاعتماد', 'مكتمل', 'مؤرشف'];
 
-  // Logic to filter data based on the selected tab (simulated for UI purposes)
+  // Logic to filter data based on the selected tab
   const filteredData = activeFilter === 'الكل' 
     ? data 
-    : data.filter(item => item.status.includes(activeFilter) || (activeFilter === 'مكتمل' && item.status === 'تمت الإضافة'));
+    : data.filter(item => {
+        if (activeFilter === 'مكتمل') {
+             // Show both 'Completed' and 'Added' items under 'Completed' tab
+             return item.status === 'مكتمل' || item.status === 'تمت الإضافة';
+        }
+        return item.status === activeFilter;
+    });
 
   return (
     <section className="bg-surface-light dark:bg-surface-dark rounded-2xl border border-gray-200 dark:border-border-dark overflow-hidden shadow-lg mt-8 mb-8">

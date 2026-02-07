@@ -23,10 +23,11 @@ const NewsTicker: React.FC = () => {
       </div>
 
       {/* Scrolling Content */}
-      <div className="flex-1 overflow-hidden relative h-full flex items-center bg-[#0F172A]/50 backdrop-blur-sm">
+      <div className="flex-1 overflow-hidden relative h-full flex items-center bg-[#0F172A]/50 backdrop-blur-sm" dir="ltr">
+        {/* dir="ltr" used on container to ensure translateX works physically from right to left as intended with the animation keyframes */}
         <div className="animate-ticker absolute whitespace-nowrap flex items-center gap-12 w-max">
           {NEWS_ITEMS.map((item, index) => (
-            <div key={index} className="flex items-center gap-3 group cursor-pointer">
+            <div key={index} className="flex items-center gap-3 group cursor-pointer" dir="rtl">
                <span className="text-xs md:text-sm text-gray-300 font-medium group-hover:text-primary transition-colors duration-300">
                  {item}
                </span>
@@ -39,12 +40,12 @@ const NewsTicker: React.FC = () => {
       {/* Animation Styles */}
       <style>{`
         @keyframes ticker {
-          0% { transform: translateX(-100%); }
-          100% { transform: translateX(100%); } /* Use 100% of container width */
+          0% { transform: translateX(100%); }
+          100% { transform: translateX(-100%); }
         }
         .animate-ticker {
           animation: ticker 45s linear infinite;
-          left: 0;
+          right: 0; /* Start from right edge */
           min-width: 100%;
         }
         .animate-ticker:hover {

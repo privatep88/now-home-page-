@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="منصة الأنظمة الإدارية الذكية - لوحة تحكم شاملة لإدارة الأنظمة والخدمات" />
     <title>Smart Admin Platform</title>
     
     <!-- Fonts -->
@@ -35,6 +36,15 @@
                         'xl': '1rem',
                         '2xl': '1.5rem',
                     },
+                    keyframes: {
+                        ticker: {
+                            '0%': { transform: 'translateX(100%)' },
+                            '100%': { transform: 'translateX(-100%)' },
+                        }
+                    },
+                    animation: {
+                        ticker: 'ticker 45s linear infinite',
+                    }
                 },
             },
         };
@@ -56,6 +66,7 @@
             background-attachment: fixed, fixed;
             background-repeat: repeat, no-repeat;
             min-height: 100vh;
+            overflow-x: hidden; /* Prevent horizontal scroll from ticker */
         }
         
         /* Subtle noise texture overlay for matte finish */
@@ -106,6 +117,7 @@
   <script type="importmap">
 {
   "imports": {
+    "react-dom/client": "https://esm.sh/react-dom@^19.2.4/client",
     "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
     "react/": "https://esm.sh/react@^19.2.4/",
     "react": "https://esm.sh/react@^19.2.4"

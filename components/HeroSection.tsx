@@ -77,7 +77,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ searchQuery, setSearchQuery }
       <div className="lg:col-span-4 bg-surface-light dark:bg-surface-dark rounded-2xl p-6 border border-gray-200 dark:border-border-dark shadow-lg flex flex-col h-full">
         <div className="flex justify-between items-center mb-6">
           <h3 className="font-bold text-gray-900 dark:text-white">إجراءات سريعة</h3>
-          <span className="text-[10px] bg-gray-200 dark:bg-slate-700 px-2 py-0.5 rounded text-gray-600 dark:text-gray-300">جاهزية الخدمة: 99.9%</span>
+          <span className="text-[10px] bg-gray-200 dark:bg-slate-700 px-2 py-0.5 rounded text-gray-600 dark:text-gray-300">الخدمات الأكثر إستخداماً</span>
         </div>
         <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">أهم الإجراءات اليومية في مكان واحد.</p>
         
