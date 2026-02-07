@@ -1,10 +1,11 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import SystemCard from './components/SystemCard';
 import TableSection from './components/TableSection';
 import Footer from './components/Footer';
 import NewsTicker from './components/NewsTicker';
+import LoginPage from './components/LoginPage'; // Import the new Login Page
 import { SYSTEM_CARDS_DATA, TABLE_DATA } from './constants';
 
 // Social Media Icons
@@ -33,8 +34,30 @@ const LinkedInIcon = () => (
 );
 
 const App: React.FC = () => {
+  // Authentication State
+  const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false);
+  
+  // Dashboard State
   const [searchQuery, setSearchQuery] = useState('');
   const socialButtonClass = "bg-gray-50 dark:bg-[#0F172A] border border-gray-200 dark:border-slate-700 text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary hover:border-primary dark:hover:border-primary p-3 rounded-xl transition duration-300 hover:scale-105 shadow-sm";
+
+  // Check localStorage for persisted session (Optional, but good UX)
+  useEffect(() => {
+    const session = localStorage.getItem('isLoggedIn');
+    if (session === 'true') {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  const handleLogin = () => {
+    setIsAuthenticated(true);
+    localStorage.setItem('isLoggedIn', 'true');
+  };
+
+  const handleLogout = () => {
+    setIsAuthenticated(false);
+    localStorage.removeItem('isLoggedIn');
+  };
 
   // Filter Systems
   const filteredSystems = useMemo(() => {
@@ -56,9 +79,15 @@ const App: React.FC = () => {
     );
   }, [searchQuery]);
 
+  // If not authenticated, show Login Page
+  if (!isAuthenticated) {
+    return <LoginPage onLogin={handleLogin} />;
+  }
+
+  // If authenticated, show Dashboard
   return (
     <div className="flex flex-col min-h-screen">
-      <Header />
+      <Header onLogout={handleLogout} />
       
       <main className="flex-grow p-4 md:p-8 max-w-7xl mx-auto w-full space-y-8">
         
