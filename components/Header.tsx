@@ -15,7 +15,7 @@ const Header: React.FC = () => {
       <div className="flex items-center gap-4">
         <div className="hidden md:flex items-center gap-2 bg-gray-100 dark:bg-white/5 px-3 py-1.5 rounded-lg border border-gray-200 dark:border-white/10 backdrop-blur-sm">
           <span className="material-icons-outlined text-primary text-sm">event_note</span>
-          <span class="text-xs font-medium text-gray-600 dark:text-gray-300">الخميس، 5 فبراير 2026</span>
+          <span className="text-xs font-medium text-gray-600 dark:text-gray-300">الخميس، 5 فبراير 2026</span>
         </div>
         <button className="relative p-2 rounded-full hover:bg-gray-100 dark:hover:bg-white/10 transition">
           <span className="material-icons-outlined text-gray-600 dark:text-gray-400">notifications</span>
