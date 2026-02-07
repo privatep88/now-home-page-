@@ -7,6 +7,7 @@ export interface SystemCardProps {
     text: string;
     colorClass: string;
   }[];
+  link?: string;
 }
 
 export interface TableItem {

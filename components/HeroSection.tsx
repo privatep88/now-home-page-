@@ -1,6 +1,18 @@
 import React from 'react';
 
-const HeroSection: React.FC = () => {
+interface HeroSectionProps {
+  searchQuery: string;
+  setSearchQuery: (query: string) => void;
+}
+
+const HeroSection: React.FC<HeroSectionProps> = ({ searchQuery, setSearchQuery }) => {
+  // Get current date dynamically
+  const today = new Date();
+  const day = today.getDate().toString().padStart(2, '0');
+  // Use ar-EG to ensure "فبراير" style naming (Gregorian)
+  const month = new Intl.DateTimeFormat('ar-EG', { month: 'long' }).format(today);
+  const year = today.getFullYear().toString();
+
   return (
     <section className="grid grid-cols-1 lg:grid-cols-12 gap-6">
       {/* Welcome & Search Area */}
@@ -24,37 +36,39 @@ const HeroSection: React.FC = () => {
                 className="w-full bg-gray-50 dark:bg-[#0F172A] border border-gray-300 dark:border-slate-700 text-gray-900 dark:text-white rounded-lg py-3 px-4 pl-10 focus:ring-2 focus:ring-primary focus:border-transparent outline-none transition placeholder-gray-500 text-sm"
                 placeholder="ابحث عن نظام..."
                 type="text"
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
               />
               <span className="material-icons-outlined absolute left-3 top-3 text-gray-500">search</span>
             </div>
             <button className="bg-primary hover:bg-primary_hover text-black font-bold py-3 px-6 rounded-lg transition shadow-md shadow-primary/20 text-sm">
-              عرض جميع الأنظمة
+              أبحث
             </button>
           </div>
         </div>
 
-        {/* Quick Mini Stats in Hero */}
+        {/* Quick Navigation Cards (Updated) */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 relative z-10 mt-auto">
           <div className="bg-gray-50 dark:bg-[#0F172A] p-4 rounded-xl border border-gray-200 dark:border-slate-700 flex items-center justify-between group cursor-pointer hover:border-primary/50 transition">
             <div>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">الرخص</p>
-              <p className="text-xs text-gray-400">حالات وتنبيهات</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">الرئيسية</p>
+              <p className="text-xs text-gray-400">لوحة المعلومات</p>
             </div>
-            <span className="material-icons-outlined text-primary group-hover:scale-110 transition">account_balance</span>
+            <span className="material-icons-outlined text-primary group-hover:scale-110 transition">home</span>
           </div>
           <div className="bg-gray-50 dark:bg-[#0F172A] p-4 rounded-xl border border-gray-200 dark:border-slate-700 flex items-center justify-between group cursor-pointer hover:border-primary/50 transition">
             <div>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">الزوار</p>
-              <p className="text-xs text-gray-400">تقارير دورية</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">تواصل معنا</p>
+              <p className="text-xs text-gray-400">الدعم الفني</p>
             </div>
-            <span className="material-icons-outlined text-primary group-hover:scale-110 transition">groups</span>
+            <span className="material-icons-outlined text-primary group-hover:scale-110 transition">headset_mic</span>
           </div>
           <div className="bg-gray-50 dark:bg-[#0F172A] p-4 rounded-xl border border-gray-200 dark:border-slate-700 flex items-center justify-between group cursor-pointer hover:border-primary/50 transition">
             <div>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">القاعات</p>
-              <p className="text-xs text-gray-400">منع التعارض</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">English</p>
+              <p className="text-xs text-gray-400">Language</p>
             </div>
-            <span className="material-icons-outlined text-primary group-hover:scale-110 transition">meeting_room</span>
+            <span className="material-icons-outlined text-primary group-hover:scale-110 transition">language</span>
           </div>
         </div>
       </div>
@@ -68,17 +82,29 @@ const HeroSection: React.FC = () => {
         <p className="text-xs text-gray-500 dark:text-gray-400 mb-4">أهم الإجراءات اليومية في مكان واحد.</p>
         
         <div className="space-y-3 mb-8">
-          <ActionButton icon="add_business" label="إضافة رخصة/عقد" />
-          <ActionButton icon="person_add" label="تسجيل زائر/مورد" />
-          <ActionButton icon="event_available" label="حجز قاعة اجتماع" />
+          <ActionButton 
+            icon="add_business" 
+            label="إضافة رخصة/عقد" 
+            url="https://license-jet.vercel.app/"
+          />
+          <ActionButton 
+            icon="person_add" 
+            label="تسجيل زائر/مورد" 
+            url="https://vistor-vindor.vercel.app/"
+          />
+          <ActionButton 
+            icon="event_available" 
+            label="حجز قاعة اجتماع" 
+            url="https://hall-nu.vercel.app/"
+          />
         </div>
 
         <div className="mt-auto">
-          <h4 className="text-xs font-bold text-gray-400 mb-3">مؤشرات مختصرة</h4>
+          <h4 className="text-xs font-bold text-gray-400 mb-3">تاريخ اليوم</h4>
           <div className="grid grid-cols-3 gap-2">
-            <StatBox label="معلقة" value="12" />
-            <StatBox label="اليوم" value="7" />
-            <StatBox label="تقارير" value="3" />
+            <StatBox label="التاريخ" value={day} />
+            <StatBox label="الشهر" value={month} />
+            <StatBox label="السنة" value={year} />
           </div>
         </div>
       </div>
@@ -86,14 +112,19 @@ const HeroSection: React.FC = () => {
   );
 };
 
-const ActionButton: React.FC<{ icon: string; label: string }> = ({ icon, label }) => (
-  <button className="w-full flex items-center justify-between p-3 rounded-lg bg-gray-50 dark:bg-[#0F172A] border border-gray-200 dark:border-slate-700 hover:border-primary dark:hover:border-primary transition group">
+const ActionButton: React.FC<{ icon: string; label: string; url: string }> = ({ icon, label, url }) => (
+  <a 
+    href={url}
+    target="_blank"
+    rel="noopener noreferrer"
+    className="w-full flex items-center justify-between p-3 rounded-lg bg-gray-50 dark:bg-[#0F172A] border border-gray-200 dark:border-slate-700 hover:border-primary dark:hover:border-primary transition group block"
+  >
     <div className="flex items-center gap-3">
       <span className="material-icons-outlined text-primary">{icon}</span>
       <span className="text-sm font-medium text-gray-700 dark:text-gray-200 group-hover:text-primary transition">{label}</span>
     </div>
-    <span className="material-icons-outlined text-gray-400 text-sm">arrow_back</span>
-  </button>
+    <span className="material-icons-outlined text-gray-400 text-sm rtl:rotate-180">arrow_back</span>
+  </a>
 );
 
 const StatBox: React.FC<{ label: string; value: string }> = ({ label, value }) => (

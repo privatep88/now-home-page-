@@ -1,7 +1,7 @@
 import React from 'react';
 import { SystemCardProps } from '../types';
 
-const SystemCard: React.FC<SystemCardProps> = ({ title, description, icon, tags, statusLabels }) => {
+const SystemCard: React.FC<SystemCardProps> = ({ title, description, icon, tags, statusLabels, link }) => {
   return (
     <div className="bg-surface-light dark:bg-surface-dark rounded-2xl p-6 border border-gray-200 dark:border-border-dark hover:border-primary/50 transition duration-300 shadow-md flex flex-col h-full">
       <div className="flex justify-between items-start mb-4">
@@ -36,13 +36,26 @@ const SystemCard: React.FC<SystemCardProps> = ({ title, description, icon, tags,
       </ul>
 
       <div className="mt-auto flex justify-between items-center">
-        <button className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg text-xs transition border border-gray-700 group">
-          <span>الدخول إلى النظام</span>
-          <span className="material-icons-outlined text-sm text-primary group-hover:translate-x-1 transition-transform rtl:rotate-180">login</span>
-        </button>
+        {link ? (
+          <a 
+            href={link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg text-xs transition border border-gray-700 group"
+          >
+            <span>الدخول إلى النظام</span>
+            <span className="material-icons-outlined text-sm text-primary group-hover:translate-x-1 transition-transform rtl:rotate-180">login</span>
+          </a>
+        ) : (
+          <button className="flex items-center gap-2 bg-gray-800 hover:bg-gray-700 text-white px-4 py-2 rounded-lg text-xs transition border border-gray-700 group">
+            <span>الدخول إلى النظام</span>
+            <span className="material-icons-outlined text-sm text-primary group-hover:translate-x-1 transition-transform rtl:rotate-180">login</span>
+          </button>
+        )}
+        
         <div className="flex items-center gap-1 text-gray-500 text-xs cursor-pointer hover:text-white">
           <span className="material-icons-outlined text-sm">description</span>
-          <span>عرض تجريبي للواجهة</span>
+          <span>الدخول الى واجهة النظام</span>
         </div>
       </div>
     </div>

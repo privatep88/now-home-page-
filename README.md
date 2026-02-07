@@ -1,20 +1,39 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# منصة الأنظمة الإدارية الذكية (Smart Admin Platform)
 
-# Run and deploy your AI Studio app
+نسخة مستقرة: 1.0.0
+تاريخ التحديث: فبراير 2026
 
-This contains everything you need to run your app locally.
+## نبذة عن المشروع
+هذه المنصة هي واجهة أمامية (Frontend) حديثة مصممة لإدارة الأنظمة التشغيلية والإدارية المتعددة في مكان واحد. تم بناؤها مع التركيز على تجربة المستخدم (UX)، دعم اللغة العربية (RTL)، والوضع الليلي (Dark Mode) كنمط افتراضي.
 
-View your app in AI Studio: https://ai.studio/apps/drive/1Nbiu4oiDf9OUF8PQMAnlF7jqxjjkvhW8
+## التقنيات المستخدمة
+- **React 19**: لبناء واجهة المستخدم.
+- **TypeScript**: لضمان جودة الكود والأنماط (Types).
+- **Tailwind CSS**: لتنسيق الواجهة بتصميم حديث وسريع الاستجابة.
+- **Material Icons**: أيقونات جوجل للتعبير البصري.
 
-## Run Locally
+## الخصائص الحالية (النسخة المستقرة)
+1. **واجهة عربية بالكامل**: دعم اتجاه النصوص من اليمين لليسار (RTL).
+2. **تصميم داكن (Dark Theme)**: هوية بصرية تعتمد على الألوان الداكنة (Slate-900) مع لمسات ذهبية (Amber).
+3. **تصميم متجاوب (Responsive)**: يعمل بكفاءة على الشاشات الكبيرة والهواتف.
+4. **مكونات قابلة لإعادة الاستخدام**:
+   - `SystemCard`: بطاقات لعرض الأنظمة المختلفة وحالاتها.
+   - `HeroSection`: قسم ترحيبي مع إحصائيات سريعة.
+   - `TableSection`: نموذج لعرض البيانات الجدولية.
+5. **بيانات وهمية (Mock Data)**: ملفات `constants.ts` و `types.ts` محددة بوضوح لفصل البيانات عن الواجهة.
 
-**Prerequisites:**  Node.js
+## تشغيل المشروع
+لتشغيل المشروع محلياً:
 
+1. تأكد من تثبيت الاعتماديات (إذا كنت تستخدم Node.js):
+   ```bash
+   npm install
+   ```
+2. بدء الخادم المحلي:
+   ```bash
+   npm start
+   ```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## ملاحظات للمطورين
+- تم تثبيت هذه النسخة كنقطة استعادة قبل البدء في أي تحديثات جوهرية جديدة.
+- نقطة الدخول الرئيسية هي `index.tsx` وتعتمد على `App.tsx`.
