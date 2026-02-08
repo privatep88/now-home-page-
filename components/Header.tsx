@@ -6,7 +6,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ onLogout }) => {
   return (
-    <header className="w-full px-6 py-4 flex justify-between items-center border-b border-gray-200 dark:border-white/5 bg-surface-light/90 dark:bg-[#0F172A]/60 backdrop-blur-xl sticky top-0 z-50 transition-all duration-300">
+    <header className="relative w-full px-6 py-4 flex justify-between items-center border-b border-gray-200 dark:border-white/5 bg-surface-light/90 dark:bg-[#0F172A]/60 backdrop-blur-xl transition-all duration-300">
       <div className="flex items-center gap-4">
         <div className="w-10 h-10 rounded-full bg-gradient-to-br from-slate-700 to-slate-900 flex items-center justify-center text-sm font-bold text-primary border border-slate-700 shadow-lg">
           Z
@@ -16,6 +16,13 @@ const Header: React.FC<HeaderProps> = ({ onLogout }) => {
           <p className="text-xs text-gray-500 dark:text-gray-400">منصة الأنظمة الإدارية الذكية</p>
         </div>
       </div>
+
+      {/* Center (Department Info) */}
+      <div className="absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 hidden lg:flex flex-col items-center justify-center text-center">
+          <span className="text-xl font-bold text-primary tracking-wide">إدارة الخدمات العامة</span>
+          <span className="text-sm text-gray-500 dark:text-gray-400 font-medium">قسم إدارة المرافق</span>
+      </div>
+
       <div className="flex items-center gap-4">
         <div className="hidden md:flex items-center gap-2 bg-gray-100 dark:bg-white/5 px-3 py-1.5 rounded-lg border border-gray-200 dark:border-white/10 backdrop-blur-sm">
           <span className="material-icons-outlined text-primary text-sm">event_note</span>
@@ -36,10 +43,10 @@ const Header: React.FC<HeaderProps> = ({ onLogout }) => {
 
         <button 
           onClick={onLogout}
-          className="group flex items-center justify-center w-9 h-9 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 hover:bg-primary hover:border-primary transition-all duration-300 shadow-sm"
+          className="group flex items-center justify-center w-9 h-9 rounded-lg border border-gray-200 dark:border-white/10 bg-gray-100 dark:bg-white/5 hover:border-primary dark:hover:border-primary transition-all duration-300 shadow-sm"
           title="تسجيل خروج"
         >
-          <span className="material-icons-outlined text-gray-500 dark:text-gray-400 group-hover:text-black text-lg rtl:rotate-180 transition-colors">logout</span>
+          <span className="material-icons-outlined text-gray-500 dark:text-gray-400 group-hover:text-primary text-lg rtl:rotate-180 transition-colors">logout</span>
         </button>
       </div>
     </header>

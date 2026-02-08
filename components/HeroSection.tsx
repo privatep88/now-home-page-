@@ -49,26 +49,26 @@ const HeroSection: React.FC<HeroSectionProps> = ({ searchQuery, setSearchQuery }
 
         {/* Quick Navigation Cards (Updated) */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 relative z-10 mt-auto">
-          <div className="bg-gray-50 dark:bg-[#0F172A] p-4 rounded-xl border border-gray-200 dark:border-slate-700 flex items-center justify-between group cursor-pointer hover:border-primary/50 transition">
+          <div className="bg-gray-50 dark:bg-[#0F172A] p-4 rounded-xl border border-gray-200 dark:border-slate-700 flex items-center justify-between group cursor-pointer hover:border-primary dark:hover:border-primary transition-colors duration-300">
             <div>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">الرئيسية</p>
-              <p className="text-xs text-gray-400">لوحة المعلومات</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">الرئيسية</p>
+              <p className="text-xs text-gray-400 group-hover:text-primary transition-colors">لوحة المعلومات</p>
             </div>
-            <span className="material-icons-outlined text-primary group-hover:scale-110 transition">home</span>
+            <span className="material-icons-outlined text-primary group-hover:scale-110 transition duration-300">home</span>
           </div>
-          <div className="bg-gray-50 dark:bg-[#0F172A] p-4 rounded-xl border border-gray-200 dark:border-slate-700 flex items-center justify-between group cursor-pointer hover:border-primary/50 transition">
+          <div className="bg-gray-50 dark:bg-[#0F172A] p-4 rounded-xl border border-gray-200 dark:border-slate-700 flex items-center justify-between group cursor-pointer hover:border-primary dark:hover:border-primary transition-colors duration-300">
             <div>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">تواصل معنا</p>
-              <p className="text-xs text-gray-400">الدعم الفني</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">تواصل معنا</p>
+              <p className="text-xs text-gray-400 group-hover:text-primary transition-colors">الدعم الفني</p>
             </div>
-            <span className="material-icons-outlined text-primary group-hover:scale-110 transition">headset_mic</span>
+            <span className="material-icons-outlined text-primary group-hover:scale-110 transition duration-300">headset_mic</span>
           </div>
-          <div className="bg-gray-50 dark:bg-[#0F172A] p-4 rounded-xl border border-gray-200 dark:border-slate-700 flex items-center justify-between group cursor-pointer hover:border-primary/50 transition">
+          <div className="bg-gray-50 dark:bg-[#0F172A] p-4 rounded-xl border border-gray-200 dark:border-slate-700 flex items-center justify-between group cursor-pointer hover:border-primary dark:hover:border-primary transition-colors duration-300">
             <div>
-              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">English</p>
-              <p className="text-xs text-gray-400">Language</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mb-1 group-hover:text-gray-900 dark:group-hover:text-white transition-colors">English</p>
+              <p className="text-xs text-gray-400 group-hover:text-primary transition-colors">Language</p>
             </div>
-            <span className="material-icons-outlined text-primary group-hover:scale-110 transition">language</span>
+            <span className="material-icons-outlined text-primary group-hover:scale-110 transition duration-300">language</span>
           </div>
         </div>
       </div>

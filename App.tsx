@@ -5,7 +5,7 @@ import SystemCard from './components/SystemCard';
 import TableSection from './components/TableSection';
 import Footer from './components/Footer';
 import NewsTicker from './components/NewsTicker';
-import LoginPage from './components/LoginPage'; // Import the new Login Page
+import LoginPage from './components/LoginPage'; 
 import { SYSTEM_CARDS_DATA, TABLE_DATA } from './constants';
 
 // Social Media Icons
@@ -69,16 +69,6 @@ const App: React.FC = () => {
     );
   }, [searchQuery]);
 
-  // Filter Table
-  const filteredTable = useMemo(() => {
-    const lowerQuery = searchQuery.toLowerCase();
-    return TABLE_DATA.filter(row => 
-      row.item.toLowerCase().includes(lowerQuery) ||
-      row.department.toLowerCase().includes(lowerQuery) ||
-      row.status.toLowerCase().includes(lowerQuery)
-    );
-  }, [searchQuery]);
-
   // If not authenticated, show Login Page
   if (!isAuthenticated) {
     return <LoginPage onLogin={handleLogin} />;
@@ -93,7 +83,7 @@ const App: React.FC = () => {
         
         <HeroSection searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
 
-        {/* News Ticker - Moved here */}
+        {/* News Ticker */}
         <NewsTicker />
 
         {/* Systems Grid Header with Social Media Links */}
@@ -101,7 +91,7 @@ const App: React.FC = () => {
           <div>
             <p className="text-primary text-xs font-bold mb-1">الأنظمة الأساسية</p>
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white">اختر النظام وابدأ العمل</h2>
-            <p className="text-gray-500 text-sm mt-2">بطاقات واضحة، إجراءات مباشرة، وتجربة متسقة تتناسب مع متطلبات العمل الحالية</p>
+            <p className="text-gray-500 text-sm mt-2">بطاقات واضحة، إجراءات مباشرة، وتجربة منسقة تتناسب مع متطلبات العمل</p>
           </div>
           <div className="flex flex-wrap gap-2">
             <a 
@@ -144,7 +134,7 @@ const App: React.FC = () => {
         </section>
 
         {/* Systems Grid */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
           {filteredSystems.length > 0 ? (
             filteredSystems.map((card, index) => (
               <SystemCard
@@ -159,7 +149,9 @@ const App: React.FC = () => {
           )}
         </section>
 
-        <TableSection data={filteredTable} />
+        {/* Table Section - Moved Below Systems Grid */}
+        <TableSection data={TABLE_DATA} />
+
       </main>
 
       <Footer />

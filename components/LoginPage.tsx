@@ -169,43 +169,10 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center p-4 relative overflow-hidden bg-[#172133]">
-      {/* 1. Canvas (Spider Web Animation) */}
       <canvas 
         ref={canvasRef} 
         className="absolute inset-0 z-0"
       />
-
-      {/* 2. Islamic Decoration Background Layers */}
-      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        {/* Repeating Geometric Pattern Overlay - Very Subtle */}
-        <div 
-          className="absolute inset-0 opacity-[0.03]"
-          style={{
-            backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg stroke='%23F59E0B' stroke-width='0.5'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-            backgroundSize: '60px 60px'
-          }}
-        />
-
-        {/* Large Decorative Corner Arch - Top Right */}
-        <div className="absolute -top-32 -right-32 w-[500px] h-[500px] opacity-[0.05] text-primary pointer-events-none">
-          <svg viewBox="0 0 200 200" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-             <path d="M100 0 C155 0 200 45 200 100 L200 0 L100 0 Z M 160 40 L 180 20 M 140 60 L 160 40" stroke="currentColor" strokeWidth="0.5" fill="none"/>
-             <circle cx="200" cy="0" r="150" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" fill="none" />
-             <circle cx="200" cy="0" r="120" stroke="currentColor" strokeWidth="0.5" fill="none" />
-             <path d="M200 0 L0 200" stroke="currentColor" strokeWidth="0.2" opacity="0.5" />
-          </svg>
-        </div>
-
-        {/* Large Decorative Corner Arch - Bottom Left */}
-        <div className="absolute -bottom-32 -left-32 w-[500px] h-[500px] opacity-[0.05] text-primary pointer-events-none transform rotate-180">
-          <svg viewBox="0 0 200 200" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-             <path d="M100 0 C155 0 200 45 200 100 L200 0 L100 0 Z M 160 40 L 180 20 M 140 60 L 160 40" stroke="currentColor" strokeWidth="0.5" fill="none"/>
-             <circle cx="200" cy="0" r="150" stroke="currentColor" strokeWidth="1" strokeDasharray="4 4" fill="none" />
-             <circle cx="200" cy="0" r="120" stroke="currentColor" strokeWidth="0.5" fill="none" />
-          </svg>
-        </div>
-      </div>
-
       <div className="absolute inset-0 bg-gradient-to-b from-[#172133]/30 via-transparent to-[#172133]/80 z-0 pointer-events-none"></div>
 
       <div className="relative z-10 w-full max-w-5xl bg-[#0F172A]/60 backdrop-blur-xl border border-white/10 rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row min-h-[600px]">
@@ -225,7 +192,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                   type="text" 
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
-                  className="w-full bg-[#1E293B]/50 border border-slate-700 rounded-lg py-3.5 px-4 pl-10 text-white focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all duration-300 text-right dir-rtl placeholder:text-right"
+                  className="w-full bg-[#1E293B]/50 border border-slate-700 rounded-lg py-3.5 px-4 pl-10 text-white focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all duration-300 text-right placeholder:text-right"
                   placeholder="أدخل اسم المستخدم"
                 />
                 <span className="material-icons-outlined absolute left-3 top-3.5 text-gray-500 group-focus-within:text-primary transition-colors">person</span>
@@ -240,7 +207,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
                   type="password" 
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full bg-[#1E293B]/50 border border-slate-700 rounded-lg py-3.5 px-4 pl-10 text-white focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all duration-300 text-right dir-rtl placeholder:text-right"
+                  className="w-full bg-[#1E293B]/50 border border-slate-700 rounded-lg py-3.5 px-4 pl-10 text-white focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/50 transition-all duration-300 text-right placeholder:text-right"
                   placeholder="أدخل كلمة المرور"
                 />
                 <span className="material-icons-outlined absolute left-3 top-3.5 text-gray-500 group-focus-within:text-primary transition-colors">lock</span>
@@ -287,7 +254,7 @@ const LoginPage: React.FC<LoginPageProps> = ({ onLogin }) => {
           <div 
             className="absolute inset-0 z-0 opacity-10 pointer-events-none"
             style={{
-              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg stroke='%23ffffff' stroke-width='0.5' stroke-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
+              backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg stroke='%23ffffff' stroke-width='0.5' stroke-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
               backgroundSize: '60px 60px'
             }}
           />
